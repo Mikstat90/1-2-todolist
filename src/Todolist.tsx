@@ -16,6 +16,20 @@ type PropsType = {
 
 export function Todolist(props: PropsType) {
 
+    let [filteredTasks, setFilteredTasks] = useState<ButtonNameType>('All')
+
+    const filterTasks = (buttonName: ButtonNameType) => {
+        setFilteredTasks(buttonName)
+    }
+
+    let durshlag = tasks
+    if (filteredTasks === 'Active') {
+        durshlag = tasks.filter(el => !el.isDone)
+    }
+    if (filteredTasks === 'Completed') {
+        durshlag = tasks.filter(el => el.isDone)
+    }
+
     return <div>
         <h3>{props.title}</h3>
         <div>
