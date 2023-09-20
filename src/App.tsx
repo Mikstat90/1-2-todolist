@@ -34,9 +34,8 @@ function App() {
         <div className="App">
             <Todolist
                 title="What to learn"
-                tasks={durshlag}
-                removeTask={removeTask}
-                filterTasks={filterTasks}/>
+                tasks={tasks}
+                removeTask={removeTask}/>
         </div>
     );
 }
