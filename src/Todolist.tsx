@@ -12,7 +12,6 @@ type PropsType = {
     removeTask: (id: number) => void
 }
 
-
 export function Todolist(props: PropsType) {
 
     return <div>
