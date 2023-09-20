@@ -2,6 +2,8 @@ import React, {useState} from 'react';
 import './App.css';
 import {Todolist} from './Todolist';
 
+export type ButtonNameType = 'All' | 'Active' | 'Completed'
+
 function App() {
 
     // let tasks = [
@@ -19,13 +21,25 @@ function App() {
     const removeTask = (id: number) => {
         // tasks = tasks.filter(el => el.id !== id)
         // setTasks(tasks)
-
         setTasks(tasks.filter(el => el.id !== id))
+    }
+
+    const filterTasks = (buttonName: ButtonNameType) => {
+
+        if (buttonName === 'Active') {
+            setTasks(tasks.filter(el => !el.isDone))
+        }
+        if (buttonName === 'Completed') {
+            setTasks(tasks.filter(el => el.isDone))
+        }
+        if (buttonName === 'All') {
+            setTasks(tasks)
+        }
     }
 
     return (
         <div className="App">
-            <Todolist title="What to learn" tasks={tasks} removeTask={removeTask}/>
+            <Todolist title="What to learn" tasks={tasks} removeTask={removeTask} filterTasks={filterTasks}/>
         </div>
     );
 }

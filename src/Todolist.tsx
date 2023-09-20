@@ -1,4 +1,5 @@
 import React from 'react';
+import {ButtonNameType} from './App';
 
 type TaskType = {
     id: number
@@ -10,6 +11,7 @@ type PropsType = {
     title: string
     tasks: Array<TaskType>
     removeTask: (id: number) => void
+    filterTasks: (buttonName: ButtonNameType) => void
 }
 
 export function Todolist(props: PropsType) {
@@ -27,9 +29,9 @@ export function Todolist(props: PropsType) {
             </li>)}
         </ul>
         <div>
-            <button>All</button>
-            <button>Active</button>
-            <button>Completed</button>
+            <button onClick={() => props.filterTasks('All')}>All</button>
+            <button onClick={() => props.filterTasks('Active')}>Active</button>
+            <button onClick={() => props.filterTasks('Completed')}>Completed</button>
         </div>
     </div>
 }
